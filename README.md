@@ -115,4 +115,26 @@ These are the core settings for your VM:
 
 By following these steps, you'll have installed IIS, enabled CGI, and prepared your virtual machine for osTicket installation.
 <h3>3. Download and Install osTicket</h3>
-<p>Download the latest <a href="https://docs.osticket.com/en/latest/Getting%20Started/Installation.html">osTicket</a> update from the official website or use zipfile provided above. Once you download it, you'll be well on your way to setting up your own ticketing system!</p>
+
+<h4>Installing osTicket v1.15.8</h4>
+<ol>
+  <li>From the “osTicket-Installation-Files” folder, unzip “osTicket-v1.15.8.zip” and copy the “upload” folder into “c:\inetpub\wwwroot”.</li>
+  <li>Within “c:\inetpub\wwwroot”, Rename “upload” to <b>“osTicket”</b>.</li>
+  <li>Reload IIS (Open IIS, Stop and Start the server).</li>
+  <li>Go to sites -> Default -> osTicket. On the right, click “Browse *:80”.</li>
+  <li>Note that some extensions are not enabled. Go back to IIS, sites -> Default -> osTicket. Double-click PHP Manager. Click “Enable or disable an extension”. Enable: php_imap.dll, php_intl.dll, php_opcache.dll.</li>
+  <li>Refresh the osTicket site in your browser, observe the changes.</li>
+  <li>Rename: ost-config.php
+    From: C:\inetpub\wwwroot\osTicket\include\ost-sampleconfig.php
+    To: C:\inetpub\wwwroot\osTicket\include\ost-config.php</li>
+  <li>Assign Permissions: ost-config.php
+    Disable inheritance -> Remove All
+    New Permissions -> Everyone -> All</li>
+  <li>Continue Setting up osTicket in the browser (click Continue). Name Helpdesk. Default email (receives email from customers).</li>
+  <li>From the “osTicket-Installation-Files” folder, install HeidiSQL. Open Heidi SQL. Create a new session, root/root. Connect to the session. Create a database called “osTicket”.</li>
+  <li>Continue Setting up osTicket in the browser. MySQL Database: osTicket. MySQL Username: root. MySQL Password: root. Click “Install Now!”</li>
+</ol>
+
+![image](https://github.com/user-attachments/assets/9a2fe431-1d23-43bc-b86b-33c70c72e700)
+
+<p>Congratulations, hopefully it is installed with no errors! Browse to your help desk login page: http://localhost/osTicket/scp/login.php</p>
