@@ -6,9 +6,6 @@
 <h2>Why osTicket?</h2>
 <p>Learn how to set up your own help desk solution using osTicket. This open-source ticketing system is perfect for businesses of all sizes.</p>
 
-<h2>Video Walkthrough</h2>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/your_vdeo_id" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 <h2>Prerequisites</h2>
 <ul>
   <li>A Microsoft Azure account</li>
