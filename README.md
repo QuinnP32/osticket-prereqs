@@ -24,7 +24,8 @@
 
 ### 1. Log in to Azure Portal ([https://azure.microsoft.com/en-us](https://azure.microsoft.com/en-us))
 
-**Screenshot:** Capture the Azure portal login screen.
+![image](https://github.com/user-attachments/assets/c55c75b1-2c5c-47e9-8309-0b016a349227)
+
 
 ### 2. Create a Resource Group
 
@@ -32,7 +33,9 @@
 * Search for "Resource group" and select it.
 * Click "Create" to start the creation process.
 
-**Screenshot:** Capture the resource group creation blade.
+![image](https://github.com/user-attachments/assets/f2c1d853-68c4-42b1-a57d-ac4b137fc137)
+
+
 
 ### 3. Configure Resource Group Details
 
@@ -40,7 +43,8 @@
 * Choose a location for your resource group (consider latency to your users).
 * Click "Create" to create the resource group.
 
-**Screenshot:** Capture the resource group creation blade with the configured details.
+![image](https://github.com/user-attachments/assets/b646a92b-d169-47cf-867e-09ee32867926)
+
 
 ### 4. Create a Virtual Machine
 
@@ -48,7 +52,7 @@
 * Search for "Virtual machine" and select it.
 * Click "Create" to start the creation process.
 
-**Screenshot:** Capture the virtual machine creation blade.
+![image](https://github.com/user-attachments/assets/01f659e1-a18b-4c9c-9055-1e832e848562)
 
 ### 5. Configure Virtual Machine Settings
 
@@ -58,15 +62,24 @@ These are the core settings for your VM:
 * **Resource group:** Select the resource group you just created.
 * **Name:** Give your VM a name (e.g., "osticket-vm").
 * **Region:** Choose a region based on your needs.
-* **Image:** Select a Windows Server image (e.g., "Windows Server 2022 Datacenter").
+* **Image:** Select a Windows 10 Pro, version 22H2 x64 image.
 * **Size:** Choose a size with enough resources for osTicket (e.g., "Standard_DS1_v2").
+* **Login:** Choose and write down a username and password.
 <h2>Connecting and Configuring Virtual Machine for osTicket</h2>
 <h3>1. Connect via Remote Desktop</h3>
-<img src="https://i.imgur.com/remote_desktop.png" alt="Connecting to the virtual machine via Remote Desktop">
-<p>Connect to your newly created virtual machine using Remote Desktop. This will allow you to interact with the server's desktop.</p>
 
-<h3>2. Install IIS and PHP</h3>
-<img src="https://i.imgur.com/iis_installation.png" alt="Installing IIS and PHP">
+![image](https://github.com/user-attachments/assets/bf99b72a-b9d0-4757-97a8-47667f4287ef)
+
+<p>Connect to your newly created virtual machine using Remote Desktop using the public IP which is available to you on the virtual machine tab in Azure.</p>
+
+![image](https://github.com/user-attachments/assets/118fcc01-c58c-4cb3-8349-b170e8c2e016)
+
+<p>Successfully logging in will allow you to interact with the server's desktop.</p>
+
+<h3>2. Install <a href="https://www.iis.net/downloads/community/2018/05/php-manager-150-for-iis-10">IIS</a>, <a href="https://www.iis.net/downloads/community/2018/05/php-manager-150-for-iis-10">PHP</a>, and enable IIS with CGI</h3>
+
+![image](https://github.com/user-attachments/assets/cb511e02-66ae-4220-b4a1-61338b395ddb)
+<p>ControlPanel>Programs>Uninstall or Change a Program>Turn Windows Features on or off>(*)Application Developement Features>(*)CGI</p>
 <p>Use the Server Manager to install IIS and PHP. Configure IIS to handle PHP requests.</p>
 
 <h3>3. Download and Install osTicket</h3>
