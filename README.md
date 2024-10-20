@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/Clzj7Xs.png" alt="osTicket logo"/>
 </p>
 
-<h1>osTicket Installation Tutorial: A Step-by-Step Guide</h1>
+<h1>osTicket: Prerequisites and Installation</h1>
 <h2>Why osTicket?</h2>
 <p>Learn how to set up your own help desk solution using osTicket. This open-source ticketing system is perfect for businesses of all sizes.</p>
 
@@ -16,6 +16,7 @@
   <li>Basic understanding of virtual machines and IIS</li>
   <li>A MySQL database (can be hosted elsewhere or created on a separate Azure VM)</li>
   <li>PHP installed</li>
+  <li><a href="https://drive.google.com/uc?export=download&id=1b3RBkXTLNGXbibeMuAynkfzdBC1NnqaD">osTicket-instalation-Files.zip</a> (Essential Components for osTicket Deployment)</li>
 </ul>
 
 <h2>Getting Started: Create a Virtual Machine on Azure</h2>
@@ -76,15 +77,45 @@ These are the core settings for your VM:
 
 <p>Successfully logging in will allow you to interact with the server's desktop.</p>
 
-<h3>2. Install <a href="https://www.iis.net/downloads/community/2018/05/php-manager-150-for-iis-10">IIS</a>, <a href="https://www.iis.net/downloads/community/2018/05/php-manager-150-for-iis-10">PHP</a>, and enable IIS with CGI</h3>
+<h3>2. Install <a href="https://www.iis.net/downloads/community/2018/05/php-manager-150-for-iis-10">IIS</a>, <a href="https://www.iis.net/downloads/community/2018/05/php-manager-150-for-iis-10">PHP</a>, Rewrite Module, and Enable CGI</h3>
 
 ![image](https://github.com/user-attachments/assets/cb511e02-66ae-4220-b4a1-61338b395ddb)
-<p>ControlPanel>Programs>Uninstall or Change a Program>Turn Windows Features on or off>(*)Application Developement Features>(*)CGI</p>
-<p>Use the Server Manager to install IIS and PHP. Configure IIS to handle PHP requests.</p>
+**Enable CGI in IIS:**
 
+1. Open the Control Panel.
+2. Go to Programs > Uninstall or Change a Program.
+3. Click on "Turn Windows features on or off".
+4. Expand "**Application Development Features**".
+5. Check the box next to "**CGI**" and click "OK".
+
+
+**Here's a breakdown of installing the additional components:**
+
+1. **Install PHP Manager for IIS:** Double-click the `PHPManagerForIIS_V1.5.0.msi` file and follow the on-screen instructions.
+2. **Install Rewrite Module:** Double-click the `rewrite_amd64_en-US.msi` file and follow the on-screen instructions.
+3. **Create C:\PHP Directory:** Open a file explorer window and create a new folder named "PHP" at the root of your C drive (C:\PHP).
+
+**Note:** You can create the directory manually or use the command prompt if preferred (e.g., `md C:\PHP`).
+
+4. **Unzip PHP:** Extract the contents of the `php-7.3.8-nts-Win32-VC15-x86.zip` file from "osTicket-Installation-Files" into the newly created "C:\PHP" folder.
+5. **Install VC_redist.x86.exe:** Double-click the `VC_redist.x86.exe` file and follow the on-screen instructions.
+6. **Install MySQL:** Double-click the `mysql-5.5.62-win32.msi` file and choose "Typical Setup".
+7. **Launch MySQL Configuration Wizard:** After installation, launch the MySQL Configuration Wizard and choose "Standard Configuration".
+8. **Set MySQL Credentials:** Enter a Username and Password.
+
+**Open IIS and Register PHP:**
+
+1. Open Internet Information Services (IIS) as an administrator.
+   ![image](https://github.com/user-attachments/assets/8b112b00-4dee-4fce-ab50-41969004d0c9)
+
+2. Use the PHP Manager to register the PHP executable (C:\PHP\php-cgi.exe).
+![image](https://github.com/user-attachments/assets/3b3c7cdb-f288-4bac-98a5-5cd2f3280bb0)
+
+**Reload IIS:**
+
+1. Open IIS again.
+2. Stop the server and then start it again to reload the configuration.
+
+By following these steps, you'll have installed IIS, enabled CGI, and prepared your virtual machine for osTicket installation.
 <h3>3. Download and Install osTicket</h3>
-<p>Download the latest osTicket package from the official website. Follow the installation instructions provided in the documentation.</p>
-
-<h3>4. Configure Database</h3>
-<img src="https://i.imgur.com/database_configuration.png" alt="Configuring the osTicket database">
-<p>Create a new database in MySQL and configure osTicket to use it. Enter the database credentials during the installation process.</p>
+<p>Download the latest <a href="https://docs.osticket.com/en/latest/Getting%20Started/Installation.html">osTicket</a> update from the official website or use zipfile provided above. Once you download it, you'll be well on your way to setting up your own ticketing system!</p>
